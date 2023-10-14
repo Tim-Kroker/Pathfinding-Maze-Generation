@@ -13,6 +13,9 @@ public class MazeGenerator {
         if(x < 0 || y < 0) throw new RuntimeException("X and Y Position cannot be negative");
         if(x + width > walls.length || y + height > walls[0].length) throw new RuntimeException("Maze dimensions exceed grid size");
 
+        if(width % 2 == 0) width--;
+        if(height % 2 == 0) height--;
+
         int junctionCountX = (width-1)/2;
         int junctionCountY = (height-1)/2;
         Graph<Vec2D> junctions = new Graph<>();
@@ -64,10 +67,10 @@ public class MazeGenerator {
                 adjacentEdges.addAll(nodeToAdd.getAdjacentEdges());
 
                 // remove wall
-                int dx = randomEdge.getNode1().get().x - randomEdge.getNode0().get().x;
-                int dy = randomEdge.getNode1().get().y - randomEdge.getNode0().get().y;
-                int node0X = x + randomEdge.getNode0().get().x * 2 + 1;
-                int node0Y = y + randomEdge.getNode0().get().y * 2 + 1;
+                int dx = randomEdge.getNode1().get().x() - randomEdge.getNode0().get().x();
+                int dy = randomEdge.getNode1().get().y() - randomEdge.getNode0().get().y();
+                int node0X = x + randomEdge.getNode0().get().x() * 2 + 1;
+                int node0Y = y + randomEdge.getNode0().get().y() * 2 + 1;
                 walls[node0X][node0Y] = false;
                 walls[node0X + dx][node0Y + dy] = false;
                 walls[node0X + 2*dx][node0Y + 2*dy] = false;
@@ -76,11 +79,5 @@ public class MazeGenerator {
             adjacentEdges.remove(randomEdge);
         }
 
-    }
-
-    private record Vec2D(int x, int y) {
-        public String toString() {
-            return "Vec2D[x=" + x + ", y=" + y + "]";
-        }
     }
 }

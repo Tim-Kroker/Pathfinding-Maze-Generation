@@ -1,0 +1,25 @@
+.root{
+    -fx-background-color: rgb(225, 228, 203);
+}
+RadioButton {
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-alignment: center;
+    -fx-font-family: monospace;
+    -fx-font-size: 20;
+
+    -fx-text-fill: white;
+    -fx-background-color: rgba(40,110,140,0.5);
+    -fx-border-color: rgb(20, 60, 90);
+    -fx-border-width: 5;
+}
+RadioButton:hover {
+    -fx-background-color: rgba(48,132,168,0.5);
+}
+RadioButton:selected {
+    -fx-background-color: rgba(40,140,60,0.5);
+    -fx-border-color: rgb(20, 90, 60);
+}
+RadioButton:selected:hover {
+    -fx-background-color: rgba(48,164,72,0.5);
+}

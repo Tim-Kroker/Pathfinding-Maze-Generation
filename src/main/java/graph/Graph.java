@@ -6,11 +6,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Graph<T> {
-    private Collection<Node<T>> nodes = null;
+    private Collection<Node<T>> nodes;
 
     public Graph() {
         nodes = new HashSet<>();
-//        nodes = new LinkedList<>();
     }
 
     public Collection<Node<T>> getNodes() {return nodes;}
@@ -21,7 +20,6 @@ public class Graph<T> {
         this.nodes.add(node);
     }
     public void addEdges(Collection<Edge<T>> edges) {
-//        this.edges.addAll(edges);
         edges.forEach(edge -> edge.getNode0().addEdge(edge));
     }
     public void addEdge(Edge<T> edge) {
